@@ -32,9 +32,8 @@ class BlogsController < ApplicationController
   end
   
   def update
-    
     if @blog.update(blog_params)
-      redirect_to edit_blog_path, notice: "ブログを編集しました！"
+      redirect_to blogs_path, notice: "ブログを編集しました！"
     else
       render 'edit'
     end
@@ -50,11 +49,8 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
   
-  def contact
-    
-  end
-  
   private
+  
   def blog_params
     params.require(:blog).permit(:title, :content)
   end
