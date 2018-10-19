@@ -10,15 +10,19 @@
       </ul>
     </div>
   <% end %>
-  
+
+<table class="table table-striped">
   <div class="blog_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <tr>
+      <th><%= form.label :title %></th><th><%= form.text_field :title %></th>
+    </tr>
   </div>
-  
+
   <div class="blog_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <tr>
+      <th><%= form.label :content %></th><th><%= form.text_field :content %></th>
+    </tr>
   </div>
-  <%= form.submit %>
+  </table>
+  <button class="btn" type="submit">登録する</button>
 <% end %>
