@@ -1,7 +1,6 @@
 
 <h1>編集画面</h1>
 
-
 <%= form_with(model: @blog, local: true) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
@@ -14,6 +13,7 @@
       </ul>
     </div>
   <% end %>
+
 <table class="table table-striped">
   <div class="blog_title">
     <tr>
