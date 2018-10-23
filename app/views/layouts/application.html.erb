@@ -24,8 +24,11 @@
           <ul class="nav navbar-nav">
               <li><a href="/tops">トップページ</a></li>
               <li><a href="/blogs">ブログ</a></li>
-              <li><a href="/users/new">新規登録</a></li>
-              <li><a href="/sessions/new">ログイン</a></li>
+              <li><li><% if logged_in? %>
+                <%= link_to "プロフィール", user_path(current_user.id) %></li><li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+              <% else %>
+                <li><%= link_to "新規登録", new_user_path %></li><li><%= link_to "ログイン", new_session_path %></li>
+              <% end %></li>
             </ul>
         </div>
       </div>
@@ -33,17 +36,6 @@
   </header>
 
 <%= yield %>
-
-
-
-
-<% if logged_in? %>
-  <%= link_to "プロフィール", user_path(current_user.id) %>
-  <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-<% else %>
-  <%= link_to "ユーザー登録", new_user_path %>
-  <%= link_to "ログイン", new_session_path %>
-<% end %>
 
   <footer>
     <p>運営会社 BLOGAPP 株式会社</p>
