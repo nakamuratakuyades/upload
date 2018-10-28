@@ -1,8 +1,17 @@
 <h1><%= @user.name %>のページ</h1>
 
-<p>メールアドレス: <%= @user.email %></p>
+<h4>メールアドレス: <%= @user.email %></h4>
 
+<p>
 
 <h1>お気に入り</h1>
-
-<p><%= @favorites_blogs %></p>
+<div class="container">
+  <ul class="row">
+    <% @favorites_blogs.each do |favorites_blog| %>
+      <% blog = Blog.find_by(id: favorites_blog.blog_id) %>
+        <ul class="list-group">
+          <li class="col-xs-12 col-md-6">ユーザー：<%= blog.user.name %><p>タイトル：<%= blog.title %><p>内容:<%= blog.content %></li>
+    <% end %>
+  </ul>
+</div>
+</p>
