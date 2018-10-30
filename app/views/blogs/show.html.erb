@@ -12,6 +12,9 @@
     <th>内容</th></th><th><%= @blog.content %></th>
   </tr>
 </table>
+<p>
+  <%= image_tag @blog.image.url %>
+</p>
 
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -20,6 +23,5 @@
     <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
 
 <a class="btn" href="/blogs" role="button">もどる</a>

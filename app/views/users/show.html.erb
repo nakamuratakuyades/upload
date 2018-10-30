@@ -1,8 +1,9 @@
 <h1><%= @user.name %>のページ</h1>
 
 <h4>メールアドレス: <%= @user.email %></h4>
-
 <p>
+  <%= image_tag @user.image.url unless @user.image.blank? %>
+</p>
 
 <h1>お気に入り</h1>
 <div class="container">

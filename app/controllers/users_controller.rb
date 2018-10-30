@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-
+  protect_from_forgery except: :search # searchアクションを除外
   before_action :authenticate_user,{only:[:index, :edit, :update]}
 
   def new
-    @user = User.new
+    if params[:back]
+      @user = User.new(user_params)
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -20,10 +24,29 @@ class UsersController < ApplicationController
     @favorites_blogs = @user.favorites
   end
 
+
+  def confirm
+    @user = User.new(user_params)
+  end
+
+  # GET /feeds/1/edit
+  def edit
+  end
+
+  def update
+
+  end
+
+  # DELETE /feeds/1
+  # DELETE /feeds/1.json
+  def destroy
+    @user.destroy
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 
 end

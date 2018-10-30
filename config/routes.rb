@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/users/confirm', to:  'users#confirm'
+
   get '/', to: 'tops#index'
   get '/tops', to: 'tops#index'
   get '/contacts', to: 'blogs#contact'
